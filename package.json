@@ -8,17 +8,17 @@
   "main": "./dist/app.js",
   "typings": "./dist/app",
   "exports": {
-    "./common": "./dist/app/common/package.json",
+    "./common/package.json": "./dist/app/common/package.json",
     "./common/*": "./dist/app/common/*.js",
-    "./core": "./dist/app/core/package.json",
+    "./core/package.json": "./dist/app/core/package.json",
     "./core/*": "./dist/app/core/*.js",
-    "./infra": "./dist/app/infra/package.json",
+    "./infra/package.json": "./dist/app/infra/package.json",
     "./infra/*": "./dist/app/infra/*.js",
-    "./port": "./dist/app/port/package.json",
+    "./port/package.json": "./dist/app/port/package.json",
     "./port/*": "./dist/app/port/*.js",
-    "./repository": "./dist/app/repository/package.json",
+    "./repository/package.json": "./dist/app/repository/package.json",
     "./repository/*": "./dist/app/repository/*.js",
-    "./schedule": "./dist/app/schedule/package.json",
+    "./schedule/package.json": "./dist/app/schedule/package.json",
     "./schedule/*": "./dist/app/schedule/*.js"
   },
   "scripts": {

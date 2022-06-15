@@ -35,15 +35,15 @@ export class NFSClientAdapter implements EggObjectLifecycle, NFSClient {
     // NFS interface https://github.com/cnpm/cnpmjs.org/wiki/NFS-Guide
     if (this.config.nfs.client) {
       this._client = this.config.nfs.client;
-      return;
-    }
-    if (this.config.env === 'prod') {
-      throw new Error('[NFSAdapter] Can\'t use local fs NFS on production env');
-    }
+    } else {
+      if (this.config.env === 'prod') {
+        throw new Error('[NFSAdapter] Can\'t use local fs NFS on production env');
+      }
 
-    // try to use fs-cnpm, don't use it on production env
-    this.logger.warn('[NFSAdapter] Don\'t use local fs NFS on production env, store on %s', this.config.nfs.dir);
-    this._client = new FSClient({ dir: this.config.nfs.dir });
+      // try to use fs-cnpm, don't use it on production env
+      this.logger.warn('[NFSAdapter] Don\'t use local fs NFS on production env, store on %s', this.config.nfs.dir);
+      this._client = new FSClient({ dir: this.config.nfs.dir });
+    }
 
     if (typeof this._client.url === 'function') {
       this.url = this._client.url.bind(this._client);
@@ -58,7 +58,7 @@ export class NFSClientAdapter implements EggObjectLifecycle, NFSClient {
   }
 
   async createDownloadStream(key: string): Promise<Readable | undefined> {
-    return await this._client.readBytes(key);
+    return await this._client.createDownloadStream(key);
   }
 
   async readBytes(key: string): Promise<Uint8Array | undefined> {
