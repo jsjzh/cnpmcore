@@ -2,7 +2,7 @@ import assert = require('assert');
 import { Context } from 'egg';
 import { app, mock } from 'egg-mock/bootstrap';
 import { TestUtil } from 'test/TestUtil';
-import { NFSClientAdapter } from 'app/common/adapter/NFSClientAdapter';
+import { NFSClientAdapter } from 'app/infra/NFSClientAdapter';
 import { NFSAdapter } from 'app/common/adapter/NFSAdapter';
 
 describe('test/port/controller/package/DownloadPackageVersionTarController.test.ts', () => {

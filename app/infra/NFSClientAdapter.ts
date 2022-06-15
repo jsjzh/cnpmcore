@@ -13,7 +13,7 @@ import { AppendResult, NFSClient, UploadOptions, UploadResult } from '../common/
 import { Readable } from 'stream';
 
 @SingletonProto({
-  name: 'nsfClient',
+  name: 'nfsClient',
   accessLevel: AccessLevel.PUBLIC,
 })
 export class NFSClientAdapter implements EggObjectLifecycle, NFSClient {
@@ -24,6 +24,10 @@ export class NFSClientAdapter implements EggObjectLifecycle, NFSClient {
   private config: EggAppConfig;
 
   private _client: any;
+
+  get client() {
+    return this._client;
+  }
 
   url?(key: string): string;
 
