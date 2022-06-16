@@ -1,4 +1,4 @@
-version: '3.6'
+version: "3.6"
 services:
   redis:
     image: redis:6-alpine
@@ -12,12 +12,12 @@ services:
       - cnpm
 
   mysql:
-    image: mariadb:10.7
+    image: mariadb:10.8.3
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD:
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       # MYSQL_DATABASE: 'cnpmcore_unittest'
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
@@ -50,7 +50,6 @@ services:
 volumes:
   cnpm-redis:
   cnpm-mysql:
-
 
 networks:
   cnpm:
